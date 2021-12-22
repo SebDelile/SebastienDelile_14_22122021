@@ -18,7 +18,10 @@ const Layout = ({ children, pageTitle }: Props): React.ReactElement => {
   return (
     <>
       <Head>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" sizes="64x64" href="/favicon64.ico" />
+        <link rel="icon" sizes="32x32" href="/favicon32.ico" />
+        <link rel="icon" sizes="24x24" href="/favicon24.ico" />
+        <link rel="icon" sizes="16x16" href="/favicon16.ico" />
         <link rel="manifest" href="/manifest.json" />
         <meta name="description" content={DESCRIPTION} />
         <meta name="keywords" content={KEYWORDS} />
