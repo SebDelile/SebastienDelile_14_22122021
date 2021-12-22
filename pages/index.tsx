@@ -1,3 +1,9 @@
-const HomePage = ({}) => <h1>Hello World !</h1>
+import Layout from '../components/Layout';
 
-export default HomePage
+const HomePage = ({}) => (
+  <Layout>
+    <h1>Hello World !</h1>
+  </Layout>
+);
+
+export default HomePage;
