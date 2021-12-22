@@ -10,36 +10,40 @@ const IMAGE = '/images/logo.jpg';
 
 type Props = {
   children: React.ReactElement | React.ReactElement[];
+  pageTitle: string;
 };
 
-const Layout = ({ children }: Props): React.ReactElement => (
-  <>
-    <Head>
-      <link rel="icon" href="/favicon.ico" />
-      <link rel="manifest" href="/manifest.json" />
-      <meta name="description" content={DESCRIPTION} />
-      <meta name="keywords" content={KEYWORDS} />
+const Layout = ({ children, pageTitle }: Props): React.ReactElement => {
+  const title = pageTitle + ' - ' + SITE_TITLE;
+  return (
+    <>
+      <Head>
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="description" content={DESCRIPTION} />
+        <meta name="keywords" content={KEYWORDS} />
+        <title>{title}</title>
+        <meta name="og:title" content={title} />
+        <meta name="og:description" content={DESCRIPTION} />
+        <meta name="og:type" content="website" />
+        <meta property="og:url" content={URL} />
+        <meta property="og:locale" content="en_en" />
+        {KEYWORDS.split(', ').map((keyword) => (
+          <meta key={keyword} property="og:tag" content={keyword} />
+        ))}
+        <meta property="og:image" content={IMAGE} />
 
-      <meta name="og:title" content={SITE_TITLE} />
-      <meta name="og:description" content={DESCRIPTION} />
-      <meta name="og:type" content="website" />
-      <meta property="og:url" content={URL} />
-      <meta property="og:locale" content="en_en" />
-      {KEYWORDS.split(', ').map((keyword) => (
-        <meta key={keyword} property="og:tag" content={keyword} />
-      ))}
-      <meta property="og:image" content={IMAGE} />
-
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={SITE_TITLE} />
-      <meta name="twitter:description" content={DESCRIPTION} />
-      <meta property="twitter:url" content={URL} />
-      <meta property="twitter:image" content={IMAGE} />
-    </Head>
-    <Header />
-    <main>{children}</main>
-    <Footer />
-  </>
-);
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={DESCRIPTION} />
+        <meta property="twitter:url" content={URL} />
+        <meta property="twitter:image" content={IMAGE} />
+      </Head>
+      <Header />
+      <main>{children}</main>
+      <Footer />
+    </>
+  );
+};
 
 export default Layout;
