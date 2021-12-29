@@ -2,8 +2,11 @@ import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 import { InputWrapper } from './InputWrapper';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import Select from 'react-select';
 import { formatDateToString } from '../utils/formatDateToString';
 import { dateBasicMath } from '../utils/dateBasicMath';
+import { US_STATES } from '../utils/US_STATES';
+import { DEPARTMENTS } from '../utils/DEPARTMENTS';
 
 type FormScheme = {
   firstName: string;
@@ -13,6 +16,8 @@ type FormScheme = {
   street: string;
   city: string;
   zipCode: number;
+  state: string;
+  department: string;
 };
 
 export const Form = () => {
@@ -128,6 +133,28 @@ export const Form = () => {
           />
         </InputWrapper>
 
+        <InputWrapper name="state" label="State" error={errors.state}>
+          <Controller
+            control={control}
+            name="state"
+            rules={{
+              required: 'Please select a state',
+            }}
+            render={({ field: { onChange, value } }) => (
+              <Select
+                onChange={(e) => onChange(e?.value)}
+                value={{
+                  value: value,
+                  label: US_STATES.find((state) => value === state.value)
+                    ?.label,
+                }}
+                options={US_STATES}
+                instanceId="select-state"
+              />
+            )}
+          />
+        </InputWrapper>
+
         <InputWrapper name="zipCode" label="ZIP Code" error={errors.zipCode}>
           <input
             type="number"
@@ -145,6 +172,31 @@ export const Form = () => {
           />
         </InputWrapper>
       </fieldset>
+
+      <InputWrapper
+        name="department"
+        label="Department"
+        error={errors.department}
+      >
+        <Controller
+          control={control}
+          name="department"
+          rules={{
+            required: 'Please select a department',
+          }}
+          render={({ field: { onChange, value } }) => (
+            <Select
+              onChange={(e) => onChange(e?.value)}
+              value={{
+                value: value,
+                label: value,
+              }}
+              options={DEPARTMENTS}
+              instanceId="select-department"
+            />
+          )}
+        />
+      </InputWrapper>
 
       <button type="submit">Save</button>
     </form>
