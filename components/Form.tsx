@@ -8,8 +8,8 @@ import { dateBasicMath } from '../utils/dateBasicMath';
 type FormScheme = {
   firstName: string;
   lastName: string;
-  dateOfBirth: Date;
-  startDate: Date;
+  dateOfBirth: string;
+  startDate: string;
   street: string;
   city: string;
   zipCode: number;
@@ -24,12 +24,7 @@ export const Form = () => {
   } = useForm<FormScheme>();
 
   const onSubmit: SubmitHandler<FormScheme> = (data) => {
-    const newEmployee = {
-      ...data,
-      dateOfBirth: formatDateToString(data.dateOfBirth),
-      startDate: formatDateToString(data.startDate),
-    };
-    console.log(newEmployee);
+    console.log(data);
   };
 
   return (
@@ -75,13 +70,13 @@ export const Form = () => {
           rules={{
             required: 'Please provide a date of birth',
             validate: (date) =>
-              date <= dateBasicMath(new Date(), { y: -14 }) ||
+              new Date(date) <= dateBasicMath(new Date(), { y: -14 }) ||
               'Employee must be more than 14',
           }}
           render={({ field: { onChange, value } }) => (
             <DatePicker
-              onChange={onChange}
-              selected={value}
+              onChange={(e) => onChange(formatDateToString(e as Date | null))}
+              selected={value ? new Date(value) : null}
               placeholderText="mm/dd/yyyy"
               maxDate={new Date()}
               yearDropdownItemNumber={100}
@@ -105,8 +100,8 @@ export const Form = () => {
           }}
           render={({ field: { onChange, value } }) => (
             <DatePicker
-              onChange={onChange}
-              selected={value}
+              onChange={(e) => onChange(formatDateToString(e as Date | null))}
+              selected={value ? new Date(value) : null}
               placeholderText="mm/dd/yyyy"
             />
           )}
