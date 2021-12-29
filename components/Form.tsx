@@ -10,6 +10,9 @@ type FormScheme = {
   lastName: string;
   dateOfBirth: Date;
   startDate: Date;
+  street: string;
+  city: string;
+  zipCode: number;
 };
 
 export const Form = () => {
@@ -109,6 +112,44 @@ export const Form = () => {
           )}
         />
       </InputWrapper>
+
+      <fieldset>
+        <legend>Address</legend>
+        <InputWrapper name="street" label="Street" error={errors.street}>
+          <input
+            type="text"
+            {...register('street', {
+              required: 'Please provide a street',
+            })}
+          />
+        </InputWrapper>
+
+        <InputWrapper name="city" label="City" error={errors.city}>
+          <input
+            type="text"
+            {...register('city', {
+              required: 'Please provide a city',
+            })}
+          />
+        </InputWrapper>
+
+        <InputWrapper name="zipCode" label="ZIP Code" error={errors.zipCode}>
+          <input
+            type="number"
+            {...register('zipCode', {
+              required: 'Please provide a ZIP code',
+              min: {
+                value: 1,
+                message: 'Please provide a valid ZIP code',
+              },
+              max: {
+                value: 99999,
+                message: 'Please provide a valid ZIP code',
+              },
+            })}
+          />
+        </InputWrapper>
+      </fieldset>
 
       <button type="submit">Save</button>
     </form>
