@@ -7,6 +7,8 @@ import { InputDate } from './InputDate';
 import { InputSelect } from './InputSelect';
 import { InputNumber } from './InputNumber';
 import { useGlobalContext } from '../utils/GlobalContext';
+import { useState } from 'react';
+import { Modal } from './Modal';
 
 export type FormScheme = {
   firstName: string;
@@ -21,7 +23,19 @@ export type FormScheme = {
 };
 
 export const Form = () => {
-  const { addEmployee } = useGlobalContext();
+  const { employeeList, addEmployee } = useGlobalContext();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalMessage, setModalMessage] = useState('');
+
+  const openModal = (message: string): void => {
+    setModalMessage(message);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = (): void => {
+    setModalMessage('');
+    setIsModalOpen(false);
+  };
 
   const {
     register,
@@ -31,7 +45,16 @@ export const Form = () => {
   } = useForm<FormScheme>();
 
   const onSubmit: SubmitHandler<FormScheme> = (data) => {
-    addEmployee(data);
+    const isEmployeeExists = employeeList.some((employee) =>
+      Object.keys(data).every(
+        (key) => employee[key] === data[key as keyof FormScheme]
+      )
+    );
+    if (isEmployeeExists) openModal('Error : employee already exists !');
+    else {
+      addEmployee(data);
+      openModal('Employee created !');
+    }
   };
 
   return (
@@ -126,6 +149,10 @@ export const Form = () => {
       />
 
       <button type="submit">Save</button>
+
+      <Modal isModalOpen={isModalOpen} closeModal={closeModal}>
+        <p>{modalMessage}</p>
+      </Modal>
     </form>
   );
 };
