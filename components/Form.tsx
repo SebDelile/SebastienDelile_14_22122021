@@ -21,6 +21,8 @@ export type FormScheme = {
 };
 
 export const Form = () => {
+  const { addEmployee } = useGlobalContext();
+
   const {
     register,
     handleSubmit,
@@ -29,7 +31,7 @@ export const Form = () => {
   } = useForm<FormScheme>();
 
   const onSubmit: SubmitHandler<FormScheme> = (data) => {
-    console.log(data);
+    addEmployee(data);
   };
 
   return (
