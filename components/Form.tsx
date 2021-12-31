@@ -34,6 +34,7 @@ export const Form = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
+      <h2>Create employee</h2>
       <InputText
         name="firstName"
         label="First Name"
