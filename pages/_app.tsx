@@ -1,5 +1,5 @@
 import type { AppProps } from 'next/app';
-import { GlobalContext } from '../utils/globalContext';
+import { GlobalContext } from '../utils/GlobalContext';
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (

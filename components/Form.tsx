@@ -6,6 +6,7 @@ import { InputText } from './InputText';
 import { InputDate } from './InputDate';
 import { InputSelect } from './InputSelect';
 import { InputNumber } from './InputNumber';
+import { useGlobalContext } from '../utils/GlobalContext';
 
 export type FormScheme = {
   firstName: string;
