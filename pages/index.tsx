@@ -1,3 +1,15 @@
-const HomePage = ({}) => <h1>Hello World !</h1>
+import Link from 'next/link';
+import { Form } from '../components/Form';
+import Layout from '../components/Layout';
 
-export default HomePage
+const HomePage = ({}) => (
+  <Layout pageTitle="Home">
+    <h1>HRnet</h1>
+    <Link href="/employee-list">
+      <a>View current employees</a>
+    </Link>
+    <Form />
+  </Layout>
+);
+
+export default HomePage;
