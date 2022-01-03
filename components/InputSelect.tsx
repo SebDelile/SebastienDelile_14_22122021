@@ -29,6 +29,7 @@ export const InputSelect = ({
       rules={addMessageToRegisterOptions(registerOptions, label)}
       render={({ field: { onChange, value } }) => (
         <Select
+          inputId={name}
           onChange={(option) => onChange(option?.value)}
           value={{
             value: value,

@@ -21,6 +21,7 @@ export const InputText = ({
   <InputWrapper name={name} label={label} error={error}>
     <input
       type="text"
+      id={name}
       {...register(name, addMessageToRegisterOptions(registerOptions, label))}
     />
   </InputWrapper>

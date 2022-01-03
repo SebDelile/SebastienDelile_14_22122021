@@ -31,6 +31,7 @@ export const InputDate = ({
       rules={addMessageToRegisterOptions(registerOptions, label)}
       render={({ field: { onChange, value } }) => (
         <DatePicker
+          id={name}
           onChange={(e) => onChange(formatDateToString(e as Date | null))}
           selected={value ? new Date(value) : null}
           placeholderText="mm/dd/yyyy"
