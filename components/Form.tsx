@@ -58,8 +58,11 @@ export const Form = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <h2>Create employee</h2>
+    <form
+      className="flex flex-col justify-start items-center w-4/5 mx-auto sm:w-full sm:mx-0 max-w-lg my-4"
+      onSubmit={handleSubmit(onSubmit)}
+    >
+      <h2 className="text-3xl font-bold text-center mb-3">Create employee</h2>
       <InputText
         name="firstName"
         label="First Name"
@@ -103,8 +106,8 @@ export const Form = () => {
         registerOptions={{ required: true }}
       />
 
-      <fieldset>
-        <legend>Address</legend>
+      <fieldset className="w-full px-3 pb-3 mt-3 border border-gray-600 rounded-lg flex flex-col justify-start items-center">
+        <legend className="ml-4 px-1 text-lg">Address</legend>
         <InputText
           name="street"
           label="Street"
@@ -148,7 +151,9 @@ export const Form = () => {
         options={DEPARTMENTS}
       />
 
-      <button type="submit">Save</button>
+      <button type="submit" className="button my-4 text-xl">
+        Save
+      </button>
 
       <Modal isModalOpen={isModalOpen} closeModal={closeModal}>
         <p>{modalMessage}</p>

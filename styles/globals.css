@@ -1,3 +1,28 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#__next {
+  @apply bg-gray-100 text-gray-800 font-body min-h-screen w-full overflow-hidden tracking-wide flex flex-col justify-start items-center;
+}
+
+input {
+  @apply w-full border rounded bg-white text-gray-800 p-2 border-gray-600 hover:border-blue-500 outline-1 outline-blue-500;
+}
+
+.link {
+  @apply text-sky-600 underline;
+}
+
+.button {
+  @apply bg-primary text-gray-100 rounded-2xl h-8 flex justify-center items-center px-4 outline-blue-500 hover:border border-blue-500;
+}
+
+.react-datepicker-popper[data-placement^='top']
+  .react-datepicker
+  .react-datepicker__triangle,
+.react-datepicker-popper[data-placement^='bottom']
+  .react-datepicker
+  .react-datepicker__triangle {
+  margin-left: -16px;
+}

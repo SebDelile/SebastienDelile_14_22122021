@@ -32,6 +32,7 @@ export const InputDate = ({
       render={({ field: { onChange, value } }) => (
         <DatePicker
           id={name}
+          dateFormat="MM/dd/yyyy"
           onChange={(e) => onChange(formatDateToString(e as Date | null))}
           selected={value ? new Date(value) : null}
           placeholderText="mm/dd/yyyy"

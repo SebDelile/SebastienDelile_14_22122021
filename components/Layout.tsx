@@ -43,7 +43,9 @@ const Layout = ({ children, pageTitle }: Props): React.ReactElement => {
         <meta property="twitter:image" content={IMAGE} />
       </Head>
       <Header />
-      <main>{children}</main>
+      <main className="w-full flex flex-col justify-start items-center">
+        {children}
+      </main>
       <Footer />
     </>
   );

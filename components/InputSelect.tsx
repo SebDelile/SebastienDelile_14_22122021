@@ -3,7 +3,9 @@ import { FieldError, RegisterOptions } from 'react-hook-form';
 import { addMessageToRegisterOptions } from '../utils/addMessageToRegisterOptions';
 import { FormScheme } from './Form';
 import { InputWrapper } from './InputWrapper';
-import Select from 'react-select';
+import Select, { GroupBase, StylesConfig } from 'react-select';
+
+type Option = { label: string | undefined; value: string | number };
 
 type props<formScheme> = {
   name: keyof formScheme;
@@ -11,7 +13,7 @@ type props<formScheme> = {
   error: FieldError | undefined;
   control: Control<FormScheme, object>;
   registerOptions?: RegisterOptions;
-  options: { label: string; value: string }[];
+  options: Option[];
 };
 
 export const InputSelect = ({
@@ -37,8 +39,52 @@ export const InputSelect = ({
           }}
           options={options}
           instanceId={`select-${name}`}
+          className="w-full"
+          styles={selectCustomStyle}
         />
       )}
     />
   </InputWrapper>
 );
+
+const gray = 'rgb(75 85 99)';
+const blue = 'rgb(59 130 246)';
+
+const selectCustomStyle: StylesConfig<Option, false, GroupBase<Option>> = {
+  control: (provided: { [Key: string]: any }, state) => ({
+    ...provided,
+    color: state.isFocused ? blue : gray,
+    borderColor: state.isFocused ? blue : gray,
+    outline: state.isFocused ? `${blue} solid 1px` : 'none',
+    '&:hover': {
+      borderColor: blue,
+    },
+    padding: '0.5rem',
+    minHeight: 'none',
+  }),
+  indicatorsContainer: (provided: { [Key: string]: any }, state) => ({
+    ...provided,
+    color: 'inherit',
+    padding: '0 0 0 8px',
+  }),
+  indicatorSeparator: (provided: { [Key: string]: any }, state) => ({
+    ...provided,
+    backgroundColor: state.isFocused ? blue : gray,
+    margin: '0',
+  }),
+  dropdownIndicator: (provided: { [Key: string]: any }, state) => ({
+    ...provided,
+    color: 'inherit',
+    '&:hover': {},
+    padding: '0 8px',
+  }),
+  valueContainer: (provided: { [Key: string]: any }, state) => ({
+    ...provided,
+    padding: '0',
+  }),
+  input: (provided: { [Key: string]: any }, state) => ({
+    ...provided,
+    padding: '0',
+    margin: '0',
+  }),
+};
