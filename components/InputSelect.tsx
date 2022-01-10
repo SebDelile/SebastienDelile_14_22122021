@@ -76,7 +76,7 @@ const selectCustomStyle: StylesConfig<Option, false, GroupBase<Option>> = {
     ...provided,
     color: 'inherit',
     '&:hover': {},
-    padding: '0 8px',
+    padding: '0 0 0 0.5rem',
   }),
   valueContainer: (provided: { [Key: string]: any }, state) => ({
     ...provided,
