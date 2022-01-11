@@ -14,15 +14,19 @@ export const Header = (): React.ReactElement => (
         <p className="text-3xl hidden xs:block">HRnet</p>
       </div>
       <nav>
-        <ul className="h-full flex flex-row justify-end items-center">
+        <ul className="h-full flex flex-row justify-end items-center sm:text-xl">
           <li className="h-full">
             <Link href="/">
-              <a className="px-3 xs:px-5 hover:underline">Home</a>
+              <a className="px-3 xs:px-5 hover:underline underline-offset-2">
+                Home
+              </a>
             </Link>
           </li>
           <li>
             <Link href="/employee-list">
-              <a className="px-3 xs:px-5 hover:underline">Employees</a>
+              <a className="px-3 xs:px-5 hover:underline underline-offset-4">
+                Employees
+              </a>
             </Link>
           </li>
         </ul>
