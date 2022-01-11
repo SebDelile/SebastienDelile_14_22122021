@@ -13,7 +13,7 @@ export const InputWrapper = ({ children, name, label, error }: props) => {
       <label htmlFor={name}>{label}</label>
       {children}
       {error && (
-        <span className="text-red-600 ml-4 text-sm absolute top-full">
+        <span className="text-red-600 text-sm absolute top-full">
           {error.message || 'Invalid field'}
         </span>
       )}
