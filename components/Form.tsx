@@ -50,7 +50,7 @@ export const Form = () => {
         (key) => employee[key] === data[key as keyof FormScheme]
       )
     );
-    if (isEmployeeExists) openModal('Error : employee already exists !');
+    if (isEmployeeExists) openModal('Employee already exists !');
     else {
       addEmployee(data);
       openModal('Employee created !');
