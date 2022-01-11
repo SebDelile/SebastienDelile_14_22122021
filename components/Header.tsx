@@ -17,16 +17,12 @@ export const Header = (): React.ReactElement => (
         <ul className="h-full flex flex-row justify-end items-center sm:text-xl">
           <li className="h-full">
             <Link href="/">
-              <a className="px-3 xs:px-5 hover:underline underline-offset-2">
-                Home
-              </a>
+              <a className="navlink">Home</a>
             </Link>
           </li>
           <li>
             <Link href="/employee-list">
-              <a className="px-3 xs:px-5 hover:underline underline-offset-4">
-                Employees
-              </a>
+              <a className="navlink">Employees</a>
             </Link>
           </li>
         </ul>

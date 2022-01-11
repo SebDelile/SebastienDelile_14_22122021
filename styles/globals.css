@@ -21,6 +21,9 @@ select {
 .button {
   @apply bg-primary text-white rounded-2xl h-8 flex justify-center items-center px-4 outline-blue-500 hover:bg-sky-300 hover:text-gray-800;
 }
+.navlink {
+  @apply px-3 xs:px-5 hover:underline underline-offset-4;
+}
 
 /*react-datapicker style modification*/
 .react-datepicker-popper[data-placement^='top']
