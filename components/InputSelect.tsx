@@ -49,6 +49,7 @@ export const InputSelect = ({
 
 const gray = 'rgb(75 85 99)';
 const blue = 'rgb(59 130 246)';
+const primary = '#596E07';
 
 const selectCustomStyle: StylesConfig<Option, false, GroupBase<Option>> = {
   control: (provided: { [Key: string]: any }, state) => ({
@@ -86,5 +87,17 @@ const selectCustomStyle: StylesConfig<Option, false, GroupBase<Option>> = {
     ...provided,
     padding: '0',
     margin: '0',
+  }),
+  option: (provided: { [Key: string]: any }, state) => ({
+    ...provided,
+    backgroundColor:
+      state.isFocused && state.isSelected
+        ? '#7dd3fc'
+        : state.isSelected
+        ? '#596E07'
+        : state.isFocused
+        ? '#e0f2fe'
+        : 'none',
+    color: state.isSelected && !state.isFocused ? 'white' : 'black',
   }),
 };
