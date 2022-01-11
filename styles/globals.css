@@ -19,7 +19,7 @@ select {
 }
 
 .button {
-  @apply bg-primary text-gray-100 rounded-2xl h-8 flex justify-center items-center px-4 outline-blue-500 hover:border border-blue-500;
+  @apply bg-primary text-white rounded-2xl h-8 flex justify-center items-center px-4 outline-blue-500 hover:border border-blue-500;
 }
 
 .react-datepicker-popper[data-placement^='top']
