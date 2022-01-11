@@ -6,6 +6,32 @@ import { useGlobalContext } from '../utils/GlobalContext';
 export const Table = () => {
   const { employeeList } = useGlobalContext();
   return employeeList.length ? (
-    <Datatable headings={headingsSample} data={employeeList} />
+    <div className="w-4/5 sm:w-11/12 mx-0 max-w-7xl my-4">
+      <Datatable
+        headings={headingsSample}
+        data={employeeList}
+        customStyle={customStyle}
+      />
+    </div>
   ) : null;
+};
+
+const customStyle = {
+  tableHeadBackground: '#F3F4F6',
+  tableBodyBackground: '#FFF',
+  tableOddRowBackground: '#E0F2FE',
+  tableSortedColumnBackground: '#FFF',
+  tableSortedColumnOddRowBackground: '#E0F2FE',
+  tableHoveredRowBackground: '#7DD3FC',
+  tableSortedColumnHoveredRowBackground: '#7DD3FC',
+  moreInfoTableBackground: '#F0F9FF',
+  tableCellHorizontalBorder: 'none',
+
+  selectPageButtonDisabledColor: '#999',
+  selectPageButtonActiveBorder: '1px solid transparent',
+  selectPageButtonActiveBackground: '#93AD18',
+  selectPageButtonActiveColor: '#FFF',
+  selectPageButtonHoveredBorder: '1px solid transparent',
+  selectPageButtonHoveredBackground: '#7DD3FC',
+  selectPageButtonHoveredColor: '#000',
 };
