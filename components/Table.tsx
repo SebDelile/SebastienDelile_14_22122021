@@ -29,7 +29,7 @@ const customStyle = {
 
   selectPageButtonDisabledColor: '#999',
   selectPageButtonActiveBorder: '1px solid transparent',
-  selectPageButtonActiveBackground: '#93AD18',
+  selectPageButtonActiveBackground: '#596E07',
   selectPageButtonActiveColor: '#FFF',
   selectPageButtonHoveredBorder: '1px solid transparent',
   selectPageButtonHoveredBackground: '#7DD3FC',
