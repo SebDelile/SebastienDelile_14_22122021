@@ -1,7 +1,7 @@
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { dateBasicMath } from '../utils/dateBasicMath';
-import { US_STATES } from '../utils/US_STATES';
-import { DEPARTMENTS } from '../utils/DEPARTMENTS';
+import { US_STATES } from '../data/US_STATES';
+import { DEPARTMENTS } from '../data/DEPARTMENTS';
 import { InputText } from './InputText';
 import { InputDate } from './InputDate';
 import { InputSelect } from './InputSelect';
@@ -10,6 +10,9 @@ import { useGlobalContext } from '../utils/GlobalContext';
 import { useState } from 'react';
 import { Modal } from './Modal';
 
+/**
+ * the shape of the submitted form, useful to type the form elements
+ */
 export type FormScheme = {
   firstName: string;
   lastName: string;
@@ -22,21 +25,33 @@ export type FormScheme = {
   department: string;
 };
 
+/**
+ * the Form component, contains all form fields, the submission button (and method) and the modal (from react-modal libary)
+ */
 export const Form = () => {
   const { employeeList, addEmployee } = useGlobalContext();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalMessage, setModalMessage] = useState('');
 
+  /**
+   * the method to open the modal and set a message into it (success or failure)
+   */
   const openModal = (message: string): void => {
     setModalMessage(message);
     setIsModalOpen(true);
   };
 
+  /**
+   * the method to close the modal and reset the message
+   */
   const closeModal = (): void => {
     setModalMessage('');
     setIsModalOpen(false);
   };
 
+  /**
+   * react-hook-form initialisation
+   */
   const {
     register,
     handleSubmit,
@@ -44,13 +59,16 @@ export const Form = () => {
     control,
   } = useForm<FormScheme>();
 
+  /**
+   * the method to submit the form data. Check first if employee already exist in contect, and if not add it.In both cse it opens the modal
+   */
   const onSubmit: SubmitHandler<FormScheme> = (data) => {
     const isEmployeeExists = employeeList.some((employee) =>
       Object.keys(data).every(
         (key) => employee[key] === data[key as keyof FormScheme]
       )
     );
-    if (isEmployeeExists) openModal('Error : employee already exists !');
+    if (isEmployeeExists) openModal('Employee already exists !');
     else {
       addEmployee(data);
       openModal('Employee created !');
@@ -58,8 +76,11 @@ export const Form = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <h2>Create employee</h2>
+    <form
+      className="flex flex-col justify-start items-center w-4/5 mx-auto sm:w-full sm:mx-0 max-w-lg my-4"
+      onSubmit={handleSubmit(onSubmit)}
+    >
+      <h2 className="text-3xl font-bold text-center mb-3">Create employee</h2>
       <InputText
         name="firstName"
         label="First Name"
@@ -103,8 +124,8 @@ export const Form = () => {
         registerOptions={{ required: true }}
       />
 
-      <fieldset>
-        <legend>Address</legend>
+      <fieldset className="w-full px-3 pb-3 mt-3 border border-gray-600 rounded-lg flex flex-col justify-start items-center">
+        <legend className="ml-4 px-1 text-lg">Address</legend>
         <InputText
           name="street"
           label="Street"
@@ -148,7 +169,9 @@ export const Form = () => {
         options={DEPARTMENTS}
       />
 
-      <button type="submit">Save</button>
+      <button type="submit" className="button my-4 text-xl">
+        Save
+      </button>
 
       <Modal isModalOpen={isModalOpen} closeModal={closeModal}>
         <p>{modalMessage}</p>

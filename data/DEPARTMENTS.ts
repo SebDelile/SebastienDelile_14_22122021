@@ -1,3 +1,6 @@
+/**
+ * The department options to fill the select in the form.
+ */
 export const DEPARTMENTS = [
   { value: 'Sales', label: 'Sales' },
   { value: 'Marketing', label: 'Marketing' },

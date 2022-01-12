@@ -3,17 +3,28 @@ import { FieldError, RegisterOptions } from 'react-hook-form';
 import { addMessageToRegisterOptions } from '../utils/addMessageToRegisterOptions';
 import { FormScheme } from './Form';
 import { InputWrapper } from './InputWrapper';
-import Select from 'react-select';
+import Select, { GroupBase, StylesConfig } from 'react-select';
 
+/**
+ * The select component option type
+ */
+type Option = { label: string | undefined; value: string | number };
+
+/**
+ * The prop types of InputSelect component
+ */
 type props<formScheme> = {
   name: keyof formScheme;
   label: string;
   error: FieldError | undefined;
   control: Control<FormScheme, object>;
   registerOptions?: RegisterOptions;
-  options: { label: string; value: string }[];
+  options: Option[];
 };
 
+/**
+ * The InputSelect component, contains a react-select component, is wrapped in InputWrapper component
+ */
 export const InputSelect = ({
   name,
   label,
@@ -29,6 +40,7 @@ export const InputSelect = ({
       rules={addMessageToRegisterOptions(registerOptions, label)}
       render={({ field: { onChange, value } }) => (
         <Select
+          inputId={name}
           onChange={(option) => onChange(option?.value)}
           value={{
             value: value,
@@ -36,8 +48,71 @@ export const InputSelect = ({
           }}
           options={options}
           instanceId={`select-${name}`}
+          className="w-full"
+          styles={selectCustomStyle}
         />
       )}
     />
   </InputWrapper>
 );
+
+/**
+ * Colors to be used in the style customisation
+ */
+const gray = 'rgb(75 85 99)';
+const blue = 'rgb(59 130 246)';
+const primary = '#596E07';
+
+/**
+ * The customStyle object to pass as props to the react-select component to customise the style
+ */
+const selectCustomStyle: StylesConfig<Option, false, GroupBase<Option>> = {
+  control: (provided: { [Key: string]: any }, state) => ({
+    ...provided,
+    color: state.isFocused ? blue : gray,
+    borderColor: state.isFocused ? blue : gray,
+    outline: state.isFocused ? `${blue} solid 1px` : 'none',
+    '&:hover': {
+      borderColor: blue,
+    },
+    padding: '0.5rem',
+    minHeight: 'none',
+  }),
+  indicatorsContainer: (provided: { [Key: string]: any }, state) => ({
+    ...provided,
+    color: 'inherit',
+    padding: '0 0 0 8px',
+  }),
+  indicatorSeparator: (provided: { [Key: string]: any }, state) => ({
+    ...provided,
+    backgroundColor: state.isFocused ? blue : gray,
+    margin: '0',
+  }),
+  dropdownIndicator: (provided: { [Key: string]: any }, state) => ({
+    ...provided,
+    color: 'inherit',
+    '&:hover': {},
+    padding: '0 0 0 0.5rem',
+  }),
+  valueContainer: (provided: { [Key: string]: any }, state) => ({
+    ...provided,
+    padding: '0',
+  }),
+  input: (provided: { [Key: string]: any }, state) => ({
+    ...provided,
+    padding: '0',
+    margin: '0',
+  }),
+  option: (provided: { [Key: string]: any }, state) => ({
+    ...provided,
+    backgroundColor:
+      state.isFocused && state.isSelected
+        ? '#7dd3fc'
+        : state.isSelected
+        ? '#596E07'
+        : state.isFocused
+        ? '#e0f2fe'
+        : 'none',
+    color: state.isSelected && !state.isFocused ? 'white' : 'black',
+  }),
+};

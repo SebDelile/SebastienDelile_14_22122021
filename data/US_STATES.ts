@@ -1,3 +1,6 @@
+/**
+ * The US states options to fill the select in the form.
+ */
 export const US_STATES = [
   {
     label: 'Alabama',

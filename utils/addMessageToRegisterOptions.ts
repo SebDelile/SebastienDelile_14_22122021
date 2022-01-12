@@ -2,6 +2,10 @@ import { RegisterOptions } from 'react-hook-form';
 import { isBeginingWithVowel } from './isBeginingWithVowel';
 import { labelWithAdaptedCase } from './labelWithadaptedCase';
 
+/**
+ * Makes enhanced error message to be displayed in the form.
+ * allow to use little syntax in Form component and have a detailed and customised error message
+ */
 export const addMessageToRegisterOptions = (
   registerOptions: RegisterOptions | undefined,
   label: string

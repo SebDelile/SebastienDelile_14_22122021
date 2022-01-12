@@ -1,3 +1,8 @@
+/**
+ * the footer component, contains a disclaimer
+ */
 export const Footer = (): React.ReactElement => (
-  <header>I am a footer !</header>
+  <footer className="h-24 w-full flex flex-none justify-center items-center bg-primary text-white">
+    <p className="italic mb-4">© 2022 Copyright - Wealth Health</p>
+  </footer>
 );
