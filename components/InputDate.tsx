@@ -1,11 +1,13 @@
+import dynamic from 'next/dynamic';
 import { Control, Controller } from 'react-hook-form';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
 import { FieldError, RegisterOptions } from 'react-hook-form';
 import { addMessageToRegisterOptions } from '../utils/addMessageToRegisterOptions';
 import { FormScheme } from './Form';
 import { InputWrapper } from './InputWrapper';
 import { formatDateToString } from '../utils/formatDateToString';
+import 'react-datepicker/dist/react-datepicker.css';
+
+const DatePicker = dynamic(() => import('react-datepicker'));
 
 /**
  * the props type of InputDate component

@@ -1,7 +1,8 @@
-import Datatable from 'react-datatable-generator';
-import { dataSample } from '../data/dataSample';
+import dynamic from 'next/dynamic';
 import { headingsSample } from '../data/headingsSample';
 import { useGlobalContext } from '../utils/GlobalContext';
+
+const Datatable = dynamic(() => import('react-datatable-generator'));
 
 /**
  * The table component to display the mployee list. Contain the table from react-datatable-generator.
