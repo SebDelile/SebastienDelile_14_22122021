@@ -1,14 +1,16 @@
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { dateBasicMath } from '../utils/dateBasicMath';
-import { US_STATES } from '../data/US_STATES';
-import { DEPARTMENTS } from '../data/DEPARTMENTS';
-import { InputText } from './InputText';
-import { InputDate } from './InputDate';
-import { InputSelect } from './InputSelect';
-import { InputNumber } from './InputNumber';
 import { useGlobalContext } from '../utils/GlobalContext';
 import { useState } from 'react';
-import { Modal } from './Modal';
+import { US_STATES } from '../data/US_STATES';
+import { DEPARTMENTS } from '../data/DEPARTMENTS';
+import dynamic from 'next/dynamic';
+
+const InputDate = dynamic(() => import('./InputDate'));
+const InputSelect = dynamic(() => import('./InputSelect'));
+const InputNumber = dynamic(() => import('./InputNumber'));
+const InputText = dynamic(() => import('./InputText'));
+const Modal = dynamic(() => import('./Modal'));
 
 /**
  * the shape of the submitted form, useful to type the form elements

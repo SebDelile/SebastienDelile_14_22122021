@@ -56,6 +56,8 @@ export const InputSelect = ({
   </InputWrapper>
 );
 
+export default InputSelect;
+
 /**
  * Colors to be used in the style customisation
  */

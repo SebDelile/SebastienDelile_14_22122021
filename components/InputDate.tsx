@@ -1,4 +1,4 @@
-import dynamic from 'next/dynamic';
+import DatePicker from 'react-datepicker';
 import { Control, Controller } from 'react-hook-form';
 import { FieldError, RegisterOptions } from 'react-hook-form';
 import { addMessageToRegisterOptions } from '../utils/addMessageToRegisterOptions';
@@ -6,8 +6,6 @@ import { FormScheme } from './Form';
 import { InputWrapper } from './InputWrapper';
 import { formatDateToString } from '../utils/formatDateToString';
 import 'react-datepicker/dist/react-datepicker.css';
-
-const DatePicker = dynamic(() => import('react-datepicker'));
 
 /**
  * the props type of InputDate component
@@ -50,3 +48,5 @@ export const InputDate = ({
     />
   </InputWrapper>
 );
+
+export default InputDate;
