@@ -2,6 +2,8 @@
 
 HRnet is a web application for human ressources management.
 
+A **demo** is hosted on Vercel here : [https://sebdelile-hrnet.vercel.app/](https://sebdelile-hrnet.vercel.app/)
+
 It contains two pages: one with a form to add a new employee, and the other one to display the current employee list.
 
 ![app preview - homepage](/docs/screenshot-homepage.png)
@@ -36,6 +38,7 @@ The project is a single page application powered by Next JS. it uses :
 - **tailwindcss** to style the app with atomic css
 - **postcss** needed for tailwind
 - **autoprefixer** to allow postcss to add vendor prefix to css rules
+- **sharp** to optimize images during production build
 - **eslint** and **eslint-config-next** as linter for the code
 - **prettier** to format the files (add any missing semi-column and 2 spaces tab-width)
 - **@types/node**, **@types/react**, **@types/react-datepicker**, **@types/react-modal** to import type declarations

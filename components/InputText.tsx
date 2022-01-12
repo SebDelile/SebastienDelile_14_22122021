@@ -32,3 +32,5 @@ export const InputText = ({
     />
   </InputWrapper>
 );
+
+export default InputText;

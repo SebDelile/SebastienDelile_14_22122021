@@ -1,11 +1,11 @@
-import { Control, Controller } from 'react-hook-form';
 import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
+import { Control, Controller } from 'react-hook-form';
 import { FieldError, RegisterOptions } from 'react-hook-form';
 import { addMessageToRegisterOptions } from '../utils/addMessageToRegisterOptions';
 import { FormScheme } from './Form';
 import { InputWrapper } from './InputWrapper';
 import { formatDateToString } from '../utils/formatDateToString';
+import 'react-datepicker/dist/react-datepicker.css';
 
 /**
  * the props type of InputDate component
@@ -48,3 +48,5 @@ export const InputDate = ({
     />
   </InputWrapper>
 );
+
+export default InputDate;

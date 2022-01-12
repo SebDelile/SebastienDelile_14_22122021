@@ -40,3 +40,4 @@ export const Modal = ({
     </ReactModal>
   );
 };
+export default Modal;

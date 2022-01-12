@@ -32,3 +32,5 @@ export const InputNumber = ({
     />
   </InputWrapper>
 );
+
+export default InputNumber;
