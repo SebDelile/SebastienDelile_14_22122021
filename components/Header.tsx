@@ -1,6 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+/**
+ * The header component, contains a logo and 2 navlinks for the 2 pages
+ */
 export const Header = (): React.ReactElement => (
   <header className="h-24 w-full flex-none bg-primary text-white shadow-md">
     <div className="h-full w-4/5 mx-auto sm:w-11/12 max-w-7xl flex justify-between items-center">

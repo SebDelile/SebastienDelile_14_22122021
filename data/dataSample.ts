@@ -2,6 +2,9 @@ interface DataElementInterface {
   [Key: string]: boolean | number | string;
 }
 
+/**
+ * data to be put in the table if there is no local storage
+ */
 export const dataSample: DataElementInterface[] = [
   {
     firstName: 'Odile',

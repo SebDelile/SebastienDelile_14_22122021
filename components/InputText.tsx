@@ -3,6 +3,9 @@ import { addMessageToRegisterOptions } from '../utils/addMessageToRegisterOption
 import { FormScheme } from './Form';
 import { InputWrapper } from './InputWrapper';
 
+/**
+ * The prop types of InputText component
+ */
 type props<formScheme> = {
   name: keyof formScheme;
   label: string;
@@ -11,6 +14,9 @@ type props<formScheme> = {
   registerOptions?: RegisterOptions;
 };
 
+/**
+ * The InputText component, contains a html tag input type text, is wrapped in InputWrapper component
+ */
 export const InputText = ({
   name,
   label,

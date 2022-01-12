@@ -5,8 +5,14 @@ import { FormScheme } from './Form';
 import { InputWrapper } from './InputWrapper';
 import Select, { GroupBase, StylesConfig } from 'react-select';
 
+/**
+ * The select component option type
+ */
 type Option = { label: string | undefined; value: string | number };
 
+/**
+ * The prop types of InputSelect component
+ */
 type props<formScheme> = {
   name: keyof formScheme;
   label: string;
@@ -16,6 +22,9 @@ type props<formScheme> = {
   options: Option[];
 };
 
+/**
+ * The InputSelect component, contains a react-select component, is wrapped in InputWrapper component
+ */
 export const InputSelect = ({
   name,
   label,
@@ -47,10 +56,16 @@ export const InputSelect = ({
   </InputWrapper>
 );
 
+/**
+ * Colors to be used in the style customisation
+ */
 const gray = 'rgb(75 85 99)';
 const blue = 'rgb(59 130 246)';
 const primary = '#596E07';
 
+/**
+ * The customStyle object to pass as props to the react-select component to customise the style
+ */
 const selectCustomStyle: StylesConfig<Option, false, GroupBase<Option>> = {
   control: (provided: { [Key: string]: any }, state) => ({
     ...provided,

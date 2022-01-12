@@ -1,13 +1,23 @@
 import ReactModal from 'react-modal';
 
+/**
+ * A needed method to anchor the modal to the root tag
+ */
 ReactModal.setAppElement('#__next');
 
+/**
+ * The prop types of Modal component
+ */
 type Props = {
   children: React.ReactElement | React.ReactElement[];
   isModalOpen: boolean;
   closeModal: () => void;
 };
 
+/**
+ * The modal component, from react-modal. Contains children and a close button on top right position.
+ * open state and methods to open and close the modal have to be passed as props.
+ */
 export const Modal = ({
   children,
   isModalOpen,

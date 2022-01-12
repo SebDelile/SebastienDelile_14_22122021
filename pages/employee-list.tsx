@@ -3,6 +3,9 @@ import { Form } from '../components/Form';
 import Layout from '../components/Layout';
 import { Table } from '../components/Table';
 
+/**
+ * the page corresponding to the employee list, contain the datatable and a link to home page
+ */
 const EmployeeListPage = ({}) => (
   <Layout pageTitle="Current Employees">
     <h1 className="text-5xl font-bold text-center my-4">Current Employees</h1>

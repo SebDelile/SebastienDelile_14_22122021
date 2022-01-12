@@ -2,17 +2,27 @@ import Head from 'next/head';
 import { Footer } from './Footer';
 import { Header } from './Header';
 
+/**
+ * Some constants with valid info for the entire website (not page specific)
+ */
 const SITE_TITLE = 'HRnet';
 const DESCRIPTION = 'Wealth Health internal app';
 const KEYWORDS = 'Wealth Health, employees, list, internal';
 const URL = 'http://sebdelile.stuff'; // TO DO : CHANGE URL AFTER DEPLOYMENT
 const IMAGE = '/images/logo.jpg';
 
+/**
+ * The prop types of Layout component
+ */
 type Props = {
   children: React.ReactElement | React.ReactElement[];
   pageTitle: string;
 };
 
+/**
+ * the Layout component, to wrap any page content. Add a Head tag to the page with all needed meta, plus a title to the page.
+ * it also displays the page content into a main tag, and add header and footer around it. main tag is the onlyone with flexgrow so it will fill the whole page.
+ */
 const Layout = ({ children, pageTitle }: Props): React.ReactElement => {
   const title = pageTitle + ' - ' + SITE_TITLE;
   return (

@@ -5,6 +5,9 @@ interface HeadingsElementInterface {
   format?: string | ((data: string | number | boolean) => string);
 }
 
+/**
+ * headings element of the datatable.
+ */
 export const headingsSample: HeadingsElementInterface[] = [
   { key: 'firstName', label: 'First Name', type: 'string' },
   { key: 'lastName', label: 'Last Name', type: 'string' },

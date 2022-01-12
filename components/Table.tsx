@@ -3,6 +3,10 @@ import { dataSample } from '../data/dataSample';
 import { headingsSample } from '../data/headingsSample';
 import { useGlobalContext } from '../utils/GlobalContext';
 
+/**
+ * The table component to display the mployee list. Contain the table from react-datatable-generator.
+ * uses the context as data to fill the table
+ */
 export const Table = () => {
   const { employeeList } = useGlobalContext();
   return employeeList.length ? (
@@ -16,6 +20,9 @@ export const Table = () => {
   ) : null;
 };
 
+/**
+ * some style rules to customise the style of the table
+ */
 const customStyle = {
   tableHeadBackground: '#F3F4F6',
   tableBodyBackground: '#FFF',
@@ -26,7 +33,6 @@ const customStyle = {
   tableSortedColumnHoveredRowBackground: '#7DD3FC',
   moreInfoTableBackground: '#F0F9FF',
   tableCellHorizontalBorder: 'none',
-
   selectPageButtonDisabledColor: '#999',
   selectPageButtonActiveBorder: '1px solid transparent',
   selectPageButtonActiveBackground: '#596E07',

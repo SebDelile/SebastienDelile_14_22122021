@@ -10,6 +10,9 @@ import { useGlobalContext } from '../utils/GlobalContext';
 import { useState } from 'react';
 import { Modal } from './Modal';
 
+/**
+ * the shape of the submitted form, useful to type the form elements
+ */
 export type FormScheme = {
   firstName: string;
   lastName: string;
@@ -22,21 +25,33 @@ export type FormScheme = {
   department: string;
 };
 
+/**
+ * the Form component, contains all form fields, the submission button (and method) and the modal (from react-modal libary)
+ */
 export const Form = () => {
   const { employeeList, addEmployee } = useGlobalContext();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalMessage, setModalMessage] = useState('');
 
+  /**
+   * the method to open the modal and set a message into it (success or failure)
+   */
   const openModal = (message: string): void => {
     setModalMessage(message);
     setIsModalOpen(true);
   };
 
+  /**
+   * the method to close the modal and reset the message
+   */
   const closeModal = (): void => {
     setModalMessage('');
     setIsModalOpen(false);
   };
 
+  /**
+   * react-hook-form initialisation
+   */
   const {
     register,
     handleSubmit,
@@ -44,6 +59,9 @@ export const Form = () => {
     control,
   } = useForm<FormScheme>();
 
+  /**
+   * the method to submit the form data. Check first if employee already exist in contect, and if not add it.In both cse it opens the modal
+   */
   const onSubmit: SubmitHandler<FormScheme> = (data) => {
     const isEmployeeExists = employeeList.some((employee) =>
       Object.keys(data).every(

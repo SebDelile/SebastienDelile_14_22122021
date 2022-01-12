@@ -7,6 +7,9 @@ import { FormScheme } from './Form';
 import { InputWrapper } from './InputWrapper';
 import { formatDateToString } from '../utils/formatDateToString';
 
+/**
+ * the props type of InputDate component
+ */
 type props<formScheme> = {
   name: keyof formScheme;
   label: string;
@@ -16,6 +19,9 @@ type props<formScheme> = {
   datePickerRules?: { [Key: string]: any };
 };
 
+/**
+ * the Inputdate component, give an input type text with a customised datepicker, is wrapped in InputWrapper component
+ */
 export const InputDate = ({
   name,
   label,

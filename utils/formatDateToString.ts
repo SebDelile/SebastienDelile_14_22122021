@@ -1,3 +1,6 @@
+/**
+ * takes a date object and returns the corresponding date string (format yyyy-mm-dd), returns undefined if no date as parameter.
+ */
 export const formatDateToString = (date: Date | null): string | undefined => {
   if (!date) return undefined;
   return [
