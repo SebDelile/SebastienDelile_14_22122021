@@ -1,7 +1,7 @@
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { dateBasicMath } from '../utils/dateBasicMath';
-import { US_STATES } from '../utils/US_STATES';
-import { DEPARTMENTS } from '../utils/DEPARTMENTS';
+import { US_STATES } from '../data/US_STATES';
+import { DEPARTMENTS } from '../data/DEPARTMENTS';
 import { InputText } from './InputText';
 import { InputDate } from './InputDate';
 import { InputSelect } from './InputSelect';
